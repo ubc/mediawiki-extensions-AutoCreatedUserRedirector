@@ -1,0 +1,19 @@
+{
+    "name": "AutoCreatedUserRedirector",
+    "version": "0.0.1",
+    "author": [
+        "Clarence K.C. Ho"
+    ],
+    "url": "https://github.com/ubc/mediawiki-extensions-AutoCreatedUserRedirector",
+    "description": "Redirect auto-created new users to specific page after successful login",
+    "license-name": "GPL-2.0-or-later",
+    "type": "other",
+    "AutoloadNamespaces": {
+        "MediaWiki\\Extension\\AutoCreatedUserRedirector\\": "includes/"
+    },
+    "Hooks": {
+        "LocalUserCreated": ["MediaWiki\\Extension\\AutoCreatedUserRedirector\\Hooks::onLocalUserCreated"],
+        "PostLoginRedirect": ["MediaWiki\\Extension\\AutoCreatedUserRedirector\\Hooks::onPostLoginRedirect"]
+    },
+    "manifest_version": 1
+}
