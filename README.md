@@ -1,6 +1,6 @@
 # mediawiki-extensions-AutoCreatedUserRedirector
 
-When a user login mediawiki via external authentication (e.g. LDAP), a local user account is created automatically.  This extension will listen to account auto-creation event and redirect the user to a specific page.
+The first time a user login mediawiki via external authentication (e.g. LDAP), a local user account is created automatically.  This extension will listen to account auto-creation event and redirect the user to a specific page.
 
 ## Setup
 
