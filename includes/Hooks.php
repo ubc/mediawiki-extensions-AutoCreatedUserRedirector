@@ -28,14 +28,21 @@ class Hooks {
      * @return true
      */
     public static function onPostLoginRedirect( &$returnTo, &$returnToQuery, &$type ) {
+        global $wgUser;
         if ( $type == 'successredirect' ) {
-            global $wgUser;
 
             if ( isset( $_SESSION[static::SESSION_KEY] ) && $_SESSION[static::SESSION_KEY] === $wgUser->getId()) {
                 unset($_SESSION[static::SESSION_KEY]);
                 if ( isset( $GLOBALS['wgAutoCreatedUserRedirect'] ) ) {
-                    $returnTo = $GLOBALS['wgAutoCreatedUserRedirect'];                    
+                    $returnTo = $GLOBALS['wgAutoCreatedUserRedirect'];
                 }
+            }
+        }
+        # we want to direct all blocked user login (not just on create) to a
+        # different page
+        if ($wgUser->getBlock()) {
+            if ( isset( $GLOBALS['wgAutoBlockedUserRedirect'] ) ) {
+                $returnTo = $GLOBALS['wgAutoBlockedUserRedirect'];
             }
         }
 
